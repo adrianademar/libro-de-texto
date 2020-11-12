@@ -11,8 +11,10 @@ public class Libro {
 
     private String autor;
     private String titulo;
-    private int numeroPaginas;
     private String numeroReferencia;
+    private int numeroPaginas;
+    private int vecesPrestado;
+    
 
     /**
      * Fija el autor y el titulo del libro a los dados como parametro
@@ -23,6 +25,7 @@ public class Libro {
         titulo = tituloLibro;
         numeroPaginas = paginasLibro;
         numeroReferencia = "";
+        vecesPrestado = 0;
     }
     
     public String getAutor() {
@@ -46,8 +49,12 @@ public class Libro {
         if (numeroReferencia.length() < 3) {
             referenciaCorrecta = "ZZZ";
         }
-        String detalles = ("Autor-> " + autor + " || Titulo-> " + titulo + " || Número de paginas-> " + numeroPaginas + " || Número de referencia-> " + referenciaCorrecta); 
+        String detalles = ("Autor-> " + autor + " || Titulo-> " + titulo + " || Número de paginas-> " + numeroPaginas + " || Número de referencia-> " + referenciaCorrecta + " || El libro ha sido prestado " + vecesPrestado + " veces"); 
         return detalles;
+    }
+    
+    public int getVecesPrestado() {
+        return vecesPrestado;
     }
     
     public void setNumeroReferencia(String nuevaReferencia) {
@@ -57,6 +64,10 @@ public class Libro {
         else {
             System.out.println("ERROR: La referencia posee menos de 3 caracteres");
         }
+    }
+    
+    public void prestar() {
+        vecesPrestado++;
     }
     
     public void imprimeAutor() {
